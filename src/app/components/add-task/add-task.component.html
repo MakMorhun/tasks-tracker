@@ -1,0 +1,25 @@
+<form [formGroup]="form" (submit)="onSaveTask()" >
+  <div class="form-control">
+    <label for="reminder">Task</label>
+    <input type="text" formControlName="text" required placeholder="Task name">
+    <div
+      class="invalid-input"
+      *ngIf="form.controls['text'].invalid && form.controls['text'].touched || formStatus && form.controls['text'].invalid"
+      >Please enter a task</div>
+  </div>
+  <div class="form-control">
+    <label for="day">Day & Time</label>
+    <input type="datetime-local" [min]="dateNow" required formControlName="date" [value]=" mode === 'edit' ? dueDate : ''">
+    <div
+      class="invalid-input"
+      *ngIf="form.controls['date'].invalid && form.controls['date'].touched || formStatus && form.controls['date'].invalid"
+      >Please enter a date</div>
+  </div>
+  <div class="form-control form-control-check">
+    <label for="reminder">Set Reminder</label>
+    <input type="checkbox" formControlName="reminder">
+  </div>
+  <button
+    type="submit"
+    class="btn form-btn">Save</button>
+</form>

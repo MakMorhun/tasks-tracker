@@ -1,0 +1,9 @@
+<header>
+  <h1 routerLink="/" class="title"> {{ title }} </h1>
+  <a
+    class="btn"
+    [routerLink]="location.path().includes('create') ||  location.path().includes('edit') ? '/' : '/create'"
+    routerLinkActive="btn__close"><span class="btn__text">Add Task</span></a>
+</header>
+
+

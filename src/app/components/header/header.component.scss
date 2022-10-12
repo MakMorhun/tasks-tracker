@@ -1,0 +1,22 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  .title {
+    cursor: pointer;
+  }
+}
+
+
+.btn__close {
+  span {
+    display: none;
+  }
+  &:after {
+    content: 'CLose'
+  }
+  background-color: #ff0000;
+  color: #fff;
+  font-size: 15px;
+}
