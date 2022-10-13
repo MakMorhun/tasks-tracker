@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from 'src/app/services/task.service';
-import { Task } from 'src/app/Task';
 
 @Component({
   selector: 'app-add-task',
@@ -37,7 +36,6 @@ export class AddTaskComponent implements OnInit {
         if (paramMap.has('taskId')){
           this.mode = 'edit'
           this.taskId = paramMap.get('taskId')
-          console.log(this.taskId)
           this.taskService.getTask(this.taskId)
             .subscribe( taskEdit => {
               this.dueDate = taskEdit.date.slice(0,16).replace(/-/g,'-')
@@ -60,10 +58,12 @@ export class AddTaskComponent implements OnInit {
       return
     }
     if (this.mode === 'create') {
+        // let date = new Date(this.form.value.date)
+        console.log(this.form.value.date)
         this.taskService
           .addTask({
               text: this.form.value.text,
-              date: new Date(this.form.value.date),
+              date: this.form.value.date,
               reminder: this.form.value.reminder
           })
     } else {

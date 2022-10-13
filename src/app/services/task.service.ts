@@ -6,12 +6,6 @@ import { Subject } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { Task } from '../Task'
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type' : 'application/json'
-  })
-}
-
 const BACKEND_URL = environment.apiUrl + 'tasks/'
 
 @Injectable({
@@ -24,7 +18,7 @@ export class TaskService {
   private tasksUpdated = new Subject<{tasks: Task[]}>()
 
   constructor(private http: HttpClient,
-              private router: Router) { }
+              private router: Router) {}
 
   getTasks() {
     this.http.get<Task[]>(BACKEND_URL)
