@@ -13,14 +13,14 @@ export class TasksListComponent implements OnInit, OnDestroy {
   tasks: Task[]
   isLoading: boolean
   showMessage = false
-  private postsSub: Subscription
+  private tasksSub: Subscription
 
   constructor(private tasksService: TaskService) { }
 
   ngOnInit(): void {
     this.isLoading = true
     this.tasksService.getTasks()
-    this.postsSub = this.tasksService.getTaskUpdateListener()
+    this.tasksSub = this.tasksService.getTaskUpdateListener()
       .subscribe(tasksData => {
         this.isLoading = false
         this.tasks = tasksData.tasks
@@ -42,6 +42,6 @@ export class TasksListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.postsSub.unsubscribe()
+    this.tasksSub.unsubscribe()
   }
 }

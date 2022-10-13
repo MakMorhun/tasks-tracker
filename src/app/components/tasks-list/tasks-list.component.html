@@ -2,12 +2,12 @@
   <div class="task"
     *ngFor="let task of tasks"
     [ngClass]="{ reminder: task.reminder }">  <!-- (dblclick)="onChangeReminder(task)" -->
-    <div>
+    <div class="text__wrap">
       <h3 class="text"> {{ task.text }} </h3>
       <p class="date">{{ task.date | date: 'LLLL d\'th\', EEEE \'at\' h:mmaaaaa\'m\' '}}</p>
     </div>
     <div class="buttons">
-      <button class="delete-task-sign" (click)="onDeleteTask(task._id)" >&#10006;</button>
+      <button class="delete-task-sign" (click)="onDeleteTask(task._id)">&#10006;</button>
       <button class="edit" [routerLink]="['/edit', task._id]">Edit</button>
     </div>
   </div>
